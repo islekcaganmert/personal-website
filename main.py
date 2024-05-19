@@ -15,4 +15,4 @@ def web_meta():
 
 @app.route('/.well-known/webfinger')
 def webfinger():
-    return redirect(f'https://web.brid.gy/.well-known/webfinger?resource={request.args['resource']}')
+    return redirect(f"https://web.brid.gy/.well-known/webfinger?resource={request.args['resource']}")
