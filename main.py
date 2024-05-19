@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
-@app.route('/<path:path>', defaults={'path': ''})
-def catcher(path: str) -> str:
-    return path
+@app.route('/')
+def catcher() -> str:
+    return render_template('index.html')
