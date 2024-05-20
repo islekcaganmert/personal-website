@@ -1,11 +1,16 @@
-from flask import Flask, render_template, request, redirect
+from bevy2flask import Frame
+from bevyframe import Request, redirect
+import requests
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def index() -> str:
-    return render_template('index.html')
+app = Frame(
+    package='dev.islekcaganmert.www',
+    developer='islekcaganmert@hereus.net',
+    administrator=True,
+    secret='1dc28b45cf008bddd9b77e5108c7e8',
+    style='https://github.com/hereus-pbc/HereUS-UI-3.1/raw/master/HereUS-UI-3.1.json',
+    icon='/static/favicon.png',
+    keywords=['Test']
+)
 
 
 @app.route('/.well-known/web-meta')
@@ -14,9 +19,9 @@ def web_meta():
 
 
 @app.route('/.well-known/webfinger')
-def webfinger():
-    return redirect(f"https://web.brid.gy/.well-known/webfinger?resource={request.args['resource']}")
+def webfinger(r: Request):
+    return redirect(f"https://web.brid.gy{r.path}")
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8000)
+    app.run('0.0.0.0', 8000, True, True)
