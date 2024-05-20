@@ -16,3 +16,7 @@ def web_meta():
 @app.route('/.well-known/webfinger')
 def webfinger():
     return redirect(f"https://web.brid.gy/.well-known/webfinger?resource={request.args['resource']}")
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8000)
