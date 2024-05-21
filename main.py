@@ -1,5 +1,5 @@
 from bevy2flask import Frame
-from bevyframe import Request, redirect
+from bevyframe import Request, redirect, Response
 import requests
 
 app = Frame(
@@ -20,7 +20,8 @@ def web_meta(r: Request):
 
 @app.route('/.well-known/webfinger')
 def webfinger(r: Request):
-    return redirect(f"https://web.brid.gy{r.path}")
+    return Response('', status_code=302, headers={'location': f"https://web.brid.gy/{r.path}"})
+# redirect(f"https://web.brid.gy{r.path}")
 
 
 if __name__ == '__main__':
