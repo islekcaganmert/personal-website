@@ -114,6 +114,7 @@ def get(r: Request) -> Page:
                                     )
                                     for i in [
                                         ['✉️', 'mailto:islekcaganmert@gmail.com'],
+                                        ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
                                         ['Fediverse', 'https://pebble.social/@islekcaganmert'],
                                         ['Instagram', 'https://instagram.com/islekcaganmert'],
                                         ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
