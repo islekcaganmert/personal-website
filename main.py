@@ -6,7 +6,7 @@ app = Frame(
     package='dev.islekcaganmert.www',
     developer='islekcaganmert@hereus.net',
     administrator=True,
-    secret='1dc28b45cf008bddd9b77e5108c7e8',
+    secret=open('./secret', 'r').read(),
     style='https://github.com/hereus-pbc/HereUS-UI-3.1/raw/master/HereUS-UI-3.1.json',
     icon='/static/favicon.png',
     keywords=['Test']
@@ -14,7 +14,7 @@ app = Frame(
 
 
 @app.route('/.well-known/web-meta')
-def web_meta():
+def web_meta(r: Request):
     return redirect('https://web.brid.gy/.well-known/web-meta')
 
 
