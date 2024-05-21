@@ -63,6 +63,7 @@ def get(r: Request) -> Page:
                             ),
                             Widget(
                                 'p',
+                                selector='p-note',
                                 childs=[f'{i}<br>' for i in [
                                     'Inventor of <a href="/projects/theprotocols">TheProtocols</a>',
                                     'Full-Stack Software Developer',
