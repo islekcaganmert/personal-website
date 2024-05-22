@@ -1,8 +1,10 @@
+import requests
 from flask import render_template
 from bevyframe import Request, Page, Widget
 
 
 def get(r: Request) -> Page:
+    repos = requests.get('https://api.github.com/users/islekcaganmert/repos').json()
     return Page(
         title='Çağan Mert İŞLEK',
         description='',
@@ -91,35 +93,63 @@ def get(r: Request) -> Page:
                                 ]
                             ),
                             Widget(
-                                'p',
+                                'div',
+                                style={
+                                    'width': '100vw',
+                                    'max-width': '600vw',
+                                    'margin-left': '-30px',
+                                    'overflow-x': 'scroll'
+                                },
                                 childs=[
                                     Widget(
-                                        'a',
-                                        href=i[1],
-                                        target='_blank',
-                                        rel="me",
+                                        'div',
+                                        style={
+                                            'overflow-y': 'hidden',
+                                            'overflow-x': 'scroll',
+                                            'white-space': 'nowrap',
+                                            'width': '600px',
+                                            'margin-top': '10px'
+                                        },
                                         childs=[
                                             Widget(
-                                                'button',
-                                                selector='button mini',
-                                                innertext=i[0],
+                                                'div',
                                                 style={
-                                                    'width': 'max-content',
-                                                    'margin-right': '5px',
-                                                    'padding-left': '10px',
-                                                    'padding-right': '10px'
-                                                }
+                                                    'margin-left': '30px',
+                                                    'margin-right': '-25px',
+                                                    'float': 'left',
+                                                    'display': 'inline-block'
+                                                },
+                                                childs=[
+                                                    Widget(
+                                                        'a',
+                                                        href=i[1],
+                                                        target='_blank',
+                                                        rel="me",
+                                                        childs=[
+                                                            Widget(
+                                                                'button',
+                                                                selector='button mini',
+                                                                innertext=i[0],
+                                                                style={
+                                                                    'width': 'max-content',
+                                                                    'padding-left': '10px',
+                                                                    'padding-right': '10px'
+                                                                }
+                                                            )
+                                                        ]
+                                                    )
+                                                ]
                                             )
+                                            for i in [
+                                                ['✉️', 'mailto:islekcaganmert@gmail.com'],
+                                                ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
+                                                ['Fediverse', 'https://pebble.social/@islekcaganmert'],
+                                                ['Instagram', 'https://instagram.com/islekcaganmert'],
+                                                ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
+                                                ['Discord', 'https://discordapp.com/users/983767367135932466']
+                                            ]
                                         ]
                                     )
-                                    for i in [
-                                        ['✉️', 'mailto:islekcaganmert@gmail.com'],
-                                        ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
-                                        ['Fediverse', 'https://pebble.social/@islekcaganmert'],
-                                        ['Instagram', 'https://instagram.com/islekcaganmert'],
-                                        ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
-                                        ['Discord', 'https://discordapp.com/users/983767367135932466']
-                                    ]
                                 ]
                             ),
                             Widget(
@@ -145,6 +175,65 @@ def get(r: Request) -> Page:
                                         ]
                                     )
                                     for i in ['Posts', 'Repositories', 'Videos']
+                                ]
+                            ),
+                            Widget(
+                                'div',
+                                style={
+                                    'visibility': 'hidden'
+                                },
+                                id='posts_feed',
+                                childs=[
+                                    ''
+                                    for i in repos
+                                ]
+                            ),
+                            Widget(
+                                'div',
+                                style={
+                                    'visibility': 'hidden'
+                                },
+                                id='repositories_feed',
+                                childs=[
+                                    Widget(
+                                        'a',
+                                        href=repo['html_url'],
+                                        target='_blank',
+                                        childs=[
+                                            Widget(
+                                                'div',
+                                                selector='the_box',
+                                                style={'margin-bottom': '10px'},
+                                                childs=[
+                                                    Widget('h3', innertext=repo['full_name']),
+                                                    (
+                                                        Widget('p', innertext=repo['description'], style={'margin-top': '-20px'})
+                                                        if repo['description'] is not None else ''
+                                                    ),
+                                                    Widget('p', childs=[
+                                                        f"{i.render()} &nbsp; &nbsp; " for i in [
+                                                            Widget('i', innertext=repo['language']),
+                                                            Widget('a', innertext=f"★ {repo['stargazers_count']}"),
+                                                            Widget('a', innertext=f"◉ {repo['watchers_count']}"),
+                                                            Widget('a', innertext=f"⑃ {repo['forks_count']}")
+                                                        ]
+                                                    ], style={'margin-top': '-10px'})
+                                                ]
+                                            )
+                                        ]
+                                    )
+                                    for repo in repos
+                                ]
+                            ),
+                            Widget(
+                                'div',
+                                style={
+                                    'visibility': 'hidden'
+                                },
+                                id='videos_feed',
+                                childs=[
+                                    ''
+                                    for i in repos
                                 ]
                             )
                         ]

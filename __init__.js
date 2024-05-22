@@ -13,8 +13,11 @@ function chooseTab(tabId)
     for (let i in [0, 1, 2])
     {
         buttons[i].style.color = noColor;
+        let selectedTab = buttons[i].id.split('_')[0];
+        document.getElementById(selectedTab + '_feed').style.visibility = 'hidden';
     }
 
+    document.getElementById(tabId + '_feed').style.visibility = 'unset';
     let element = document.getElementById(tabId + '_button');
     element.style.color = color;
 }
