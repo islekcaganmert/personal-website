@@ -1,0 +1,23 @@
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "type": "Person",
+  "id": "https://islekcaganmert.vercel.app/activitypub.json",
+  "name": "Çağan Mert İŞLEK",
+  "preferredUsername": "islekcaganmert.vercel.app",
+  "summary": "<a>Inventor of TheProtocols<br/>Full-Stack Software Developer<br/>Philosopher<br/>BLINK</a>",
+  "inbox": "https://islekcaganmert.vercel.app/ap/Inbox.py",
+  "outbox": "https://islekcaganmert.vercel.app/ap/Outbox.py",
+  "followers": "https://islekcaganmert.vercel.app/ap/Followers.py",
+  "following": "https://islekcaganmert.vercel.app/ap/Following.py",
+  "url": "https://islekcaganmert.vercel.app/",
+  "icon": {
+    "type": "Image",
+    "mediaType": "image/png",
+    "url": "https://islekcaganmert.vercel.app/static/favicon.png"
+  },
+  "image": {
+    "type": "Image",
+    "mediaType": "image/jpg",
+    "url": "https://islekcaganmert.vercel.app/static/banner.jpg"
+  }
+}

@@ -1,7 +1,6 @@
 from bevy2flask import Frame
-from bevyframe import Request, Response
-from flask import redirect
-import requests
+from bevyframe import Request, Response, redirect
+import json
 
 app = Frame(
     package='dev.islekcaganmert.www',
@@ -14,16 +13,5 @@ app = Frame(
 )
 
 
-@app.route('/.well-known/web-meta')
-def web_meta(r: Request):
-    return redirect('https://web.brid.gy/.well-known/web-meta')
-
-
-@app.route('/.well-known/webfinger')
-def webfinger(r: Request):
-    return redirect(f"https://web.brid.gy{r.path}")
-# Response('', status_code=302, headers={'location': f"https://web.brid.gy/{r.path}"})
-
-
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8000, True, True)
+    app.run('0.0.0.0', 8000, debug=True, run=True)

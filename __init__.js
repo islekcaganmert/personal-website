@@ -24,5 +24,4 @@ function chooseTab(tabId)
     element.style.color = color;
 }
 
-document.getElementById('button_bar').style.backgroundColor = getComputedStyle(document.body).backgroundColor;
 chooseTab('posts');
