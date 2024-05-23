@@ -153,7 +153,14 @@ def get(r: Request) -> Page:
                                 ]
                             ),
                             Widget(
-                                'p',
+                                'div',
+                                id='button_bar',
+                                style={
+                                    'position': 'sticky',
+                                    'top': '0px',
+                                    'padding-top': '10px',
+                                    'padding-bottom': '10px'
+                                },
                                 childs=[
                                     Widget(
                                         'div',
@@ -180,7 +187,9 @@ def get(r: Request) -> Page:
                             Widget(
                                 'div',
                                 style={
-                                    'visibility': 'hidden'
+                                    'visibility': 'hidden',
+                                    'height': '1px',
+                                    'overflow-y': 'hidden'
                                 },
                                 id='posts_feed',
                                 childs=[
@@ -191,7 +200,9 @@ def get(r: Request) -> Page:
                             Widget(
                                 'div',
                                 style={
-                                    'visibility': 'hidden'
+                                    'visibility': 'hidden',
+                                    'height': '1px',
+                                    'overflow-y': 'hidden'
                                 },
                                 id='repositories_feed',
                                 childs=[
@@ -228,7 +239,9 @@ def get(r: Request) -> Page:
                             Widget(
                                 'div',
                                 style={
-                                    'visibility': 'hidden'
+                                    'visibility': 'hidden',
+                                    'height': '1px',
+                                    'overflow-y': 'hidden'
                                 },
                                 id='videos_feed',
                                 childs=[

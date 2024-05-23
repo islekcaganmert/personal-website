@@ -15,11 +15,14 @@ function chooseTab(tabId)
         buttons[i].style.color = noColor;
         let selectedTab = buttons[i].id.split('_')[0];
         document.getElementById(selectedTab + '_feed').style.visibility = 'hidden';
+        document.getElementById(selectedTab + '_feed').style.height = '1px';
     }
 
     document.getElementById(tabId + '_feed').style.visibility = 'unset';
+    document.getElementById(tabId + '_feed').style.height = 'max-content';
     let element = document.getElementById(tabId + '_button');
     element.style.color = color;
 }
 
+document.getElementById('button_bar').style.backgroundColor = getComputedStyle(document.body).backgroundColor;
 chooseTab('posts');
