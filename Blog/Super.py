@@ -8,15 +8,11 @@ class Super:
     def activity(self, r: Request) -> dict:
         return {
             "@context": "https://www.w3.org/ns/activitystreams",
-            "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "type": "Note",
+            "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "published": "2024-06-06T14:55:49Z",
-            "url": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "attributedTo": "https://islekcaganmert.vercel.app/activitypub.json",
             "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
-            "contentMap": {
-                "en": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>'
-            },
         }
 
     def get(self, r: Request) -> (Page, dict):
