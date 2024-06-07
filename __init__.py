@@ -155,7 +155,7 @@ def get(r: Request) -> Page:
                             Widget(
                                 'div',
                                 id='button_bar',
-                                selector='body_green',
+                                selector='body_blank',
                                 style={
                                     'position': 'sticky',
                                     'top': '0px',
