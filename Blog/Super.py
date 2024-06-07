@@ -1,4 +1,5 @@
 from bevyframe import Request, Page, Widget, Response
+from datetime import datetime
 import json
 
 
@@ -11,7 +12,7 @@ class Super:
             "@context": "https://www.w3.org/ns/activitystreams",
             "type": "Note",
             "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
-            "published": "2024-06-06T14:55:49Z",
+            "published": self.data['datetime'].strftime('%Y-%m-%dT%H:%M:00Z'),  # "2024-06-06T14:55:49Z"
             "attributedTo": "https://islekcaganmert.vercel.app/ap/Actor.py",
             "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
         }), headers={'Content-Type': 'application/activity+json'})
