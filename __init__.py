@@ -1,3 +1,5 @@
+import json
+
 import requests
 from flask import render_template
 from bevyframe import Request, Page, Widget
@@ -5,6 +7,8 @@ from bevyframe import Request, Page, Widget
 
 def get(r: Request) -> Page:
     repos = requests.get('https://api.github.com/users/islekcaganmert/repos').json()
+    if 'application/activity+json' in r.headers.get('Accept'):
+        return json.load(open('activitypub.json', 'r'))
     return Page(
         title='Çağan Mert İŞLEK',
         description='',
