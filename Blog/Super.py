@@ -46,7 +46,7 @@ class Super:
                     Widget(
                         'div',
                         style={
-                            'position': 'fixed',
+                            'position': 'absolute',
                             'top': '10px',
                             'right': '30px',
                             'left': '30px',
