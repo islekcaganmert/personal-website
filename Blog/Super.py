@@ -24,6 +24,19 @@ class Super:
                 title=f"{self.data['title']} - Blog de Çağan Mert İŞLEK",
                 description=self.data['content'][:100],
                 selector='body_blank',
+                OpenGraph={
+                    'title': self.data['title'],
+                    'description': self.data['content'][:100],
+                    'image': (
+                        self.data['content'].split('<img')[1].split('src="')[1].split('"')[0]
+                        if '<img' in self.data['content'] else ''
+                    ),
+                    'url': f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
+                    'type': 'article',
+                    'site_name': 'Blog de Çağan Mert İŞLEK',
+                    'article:published_time': self.data['datetime'].strftime('%B %d, %Y'),
+                    'article:author': 'Çağan Mert İŞLEK'
+                },
                 icon={
                     'href': '/static/favicon.png',
                     'type': 'image/x-icon'
