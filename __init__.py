@@ -1,4 +1,6 @@
 import json
+import os
+from datetime import datetime
 
 import requests
 from flask import render_template
@@ -198,8 +200,26 @@ def get(r: Request) -> Page:
                                 },
                                 id='posts_feed',
                                 childs=[
-                                    ''
-                                    for i in repos
+                                    Widget(
+                                        'a',
+                                        href=f"/Blog/{i}",
+                                        childs=[
+                                            Widget(
+                                                'div',
+                                                selector='the_box',
+                                                style={'margin-bottom': '10px'},
+                                                childs=[
+                                                    Widget('h3', innertext=open(f"./Blog/{i}", 'r').read().split("'title': '")[1].split("'")[0]),
+                                                    Widget(
+                                                        'p',
+                                                        innertext=datetime.strptime(os.path.basename(i).split('_')[0].split('/')[-1], '%Y%m%d%H%M').strftime('%B %d, %Y'),
+                                                        style={'margin-top': '-20px'}
+                                                    )
+                                                ]
+                                            )
+                                        ]
+                                    )
+                                    for i in [i for i in os.listdir('./Blog') if i not in ['Super.py', '__pycache__']]
                                 ]
                             ),
                             Widget(
