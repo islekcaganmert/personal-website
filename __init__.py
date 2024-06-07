@@ -219,7 +219,7 @@ def get(r: Request) -> Page:
                                             )
                                         ]
                                     )
-                                    for i in [i for i in os.listdir('./Blog') if i not in ['Super.py', '__pycache__']]
+                                    for i in [i for i in os.listdir('./Blog')[::-1] if i not in ['Super.py', '__pycache__']]
                                 ]
                             ),
                             Widget(
