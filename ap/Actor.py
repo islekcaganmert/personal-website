@@ -15,7 +15,7 @@ def get(r: Request) -> Response:
         }
       ],
       "type": "Person",
-      "id": "https://islekcaganmert.vercel.app/activitypub.json",
+      "id": "https://islekcaganmert.vercel.app/ap/Actor.py",
       "name": "Çağan Mert İŞLEK",
       "preferredUsername": "islekcaganmert.vercel.app",
       "summary": "<p>Inventor of TheProtocols<br/>Full-Stack Software Developer<br/>Philosopher<br/>BLINK</p>",
@@ -39,8 +39,8 @@ def get(r: Request) -> Response:
         "url": "https://islekcaganmert.vercel.app/static/banner.jpg"
       },
       "publicKey": {
-        "id": "https://islekcaganmert.vercel.app/activitypub.json#main-key",
-        "owner": "https://islekcaganmert.vercel.app/activitypub.json",
+        "id": "https://islekcaganmert.vercel.app/ap/Actor.py#main-key",
+        "owner": "https://islekcaganmert.vercel.app/ap/Actor.py",
         "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsW47BbWdM1JVGaLWmenF\nd6hGHkgsuGQoTqUbhxRg1WoBVouo4uMHisBl5prQTjhDCzovOmoxwRubBXZKHgWx\nDkJjTH/7AIanwM/z33NnN2ibaw/IKxv14FN+EJ4M+KOKCZt2dWokdk9oaio/ULE8\nzbaF+2NtCHNvS1J/dpMIcTIpsdrrX4U6EXyOtROxeXMraKCTwx/RFhqX9KJIIChy\n7AatFzTys5CoFW198psWqmJZ1XUo5iYtvZ4LeVaZgC8X1ivKlkHy551g1A3BKg+I\nLQq0CEP6FY0Xx3b0sECTOLDwnR5OAkd7V3sGlqSDp7sfHMGMyMuWdiEZJrPl8Q4X\nEwIDAQAB\n-----END PUBLIC KEY-----"
       }
     }

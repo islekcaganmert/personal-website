@@ -1,19 +1,20 @@
-from bevyframe import Request, Page, Widget
+from bevyframe import Request, Page, Widget, Response
+import json
 
 
 class Super:
     def __init__(self, data):
         self.data = data
 
-    def activity(self, r: Request) -> dict:
-        return {
+    def activity(self, r: Request) -> Response:
+        return Response(json.dumps({
             "@context": "https://www.w3.org/ns/activitystreams",
             "type": "Note",
             "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "published": "2024-06-06T14:55:49Z",
-            "attributedTo": "https://islekcaganmert.vercel.app/activitypub.json",
+            "attributedTo": "https://islekcaganmert.vercel.app/ap/Actor.py",
             "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
-        }
+        }), headers={'Content-Type': 'application/activity+json'})
 
     def get(self, r: Request) -> (Page, dict):
         if 'application/activity+json' in r.headers.get('Accept'):
