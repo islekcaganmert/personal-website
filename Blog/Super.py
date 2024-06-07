@@ -4,12 +4,7 @@ from datetime import datetime, UTC
 
 class Super:
     def __init__(self, data):
-        self.data = {
-            'id': '',
-            'title': '',
-            'content': '',
-            'datetime': datetime.now(UTC)
-        }
+        self.data = data
 
     def activity(self, r: Request) -> dict:
         return {
@@ -89,15 +84,18 @@ class Super:
                                 'color': 'blue',
                                 'text-decoration': 'underline'
                             })]),
-                            Widget('h1', innertext=self.data['title']),
-                            Widget('p', childs=[Widget('i', childs=[
-                                'Posted by ',
-                                Widget('img', style={'height': '1em', 'border-radius': '50%'},
-                                       src='/static/favicon.png', innertext=''),
-                                ' on ',
+                            Widget('p', style={
+                                'font-size': '0.8em',
+                                'color': '#80808080'
+                            }, childs=[Widget('i', childs=[
+                                'Posted by Çağan Mert İŞLEK on ',
                                 self.data['datetime'].strftime('%B %d, %Y')
                             ])]),
-                            Widget('p', innertext=self.data['content'])
+                            Widget('h1', innertext=self.data['title']),
+                            Widget('p', innertext=self.data['content']),
+                            '''
+<p>&nbsp;</p><p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;color:blue;text-decoration:underline">CC BY-ND 4.0</a></p>
+                            '''  # CreativeCommons
                         ]
                     )
                 ]

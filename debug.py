@@ -1,5 +1,4 @@
-from bevy2flask import Frame
-from bevyframe import Request, Response, redirect
+from bevyframe import Frame, Request, Response, redirect
 import json
 
 app = Frame(
@@ -14,4 +13,4 @@ app = Frame(
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 8000, debug=True, run=True)
+    app.run('0.0.0.0', 8000, debug=True)
