@@ -7,52 +7,16 @@ class Super:
 
     def activity(self, r: Request) -> dict:
         return {
-            "@context": [
-                "https://www.w3.org/ns/activitystreams",
-                {
-                    "ostatus": "http://ostatus.org#",
-                    "atomUri": "ostatus:atomUri",
-                    "inReplyToAtomUri": "ostatus:inReplyToAtomUri",
-                    "conversation": "ostatus:conversation",
-                    "sensitive": "as:sensitive",
-                    "toot": "http://joinmastodon.org/ns#",
-                    "votersCount": "toot:votersCount",
-                    "Hashtag": "as:Hashtag"
-                }
-            ],
+            "@context": "https://www.w3.org/ns/activitystreams",
             "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "type": "Note",
-            "summary": None,
-            "inReplyTo": None,
             "published": "2024-06-06T14:55:49Z",
             "url": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "attributedTo": "https://islekcaganmert.vercel.app/activitypub.json",
-            "to": [
-                "https://www.w3.org/ns/activitystreams#Public"
-            ],
-            "cc": [
-                "https://islekcaganmert.vercel.app/ap/Followers.py"
-            ],
-            "sensitive": False,
-            "atomUri": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
-            "inReplyToAtomUri": None,
-            "conversation": f"tag:islekcaganmert.vercel.app,{self.data['datetime'].strftime('%Y-%m-%d')}:objectId={self.data['datetime'].strftime('%Y%m%d%H%M')}:objectType=Conversation",
             "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
             "contentMap": {
                 "en": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>'
             },
-            "attachment": [],
-            "tag": [],
-            "replies": {
-                "id": f"https://islekcaganmert.vercel.app/ap/Replies/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}",
-                "type": "Collection",
-                "first": {
-                    "type": "CollectionPage",
-                    "next": f"https://islekcaganmert.vercel.app/ap/Replies/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}",
-                    "partOf": f"https://islekcaganmert.vercel.app/ap/Replies/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}",
-                    "items": []
-                }
-            }
         }
 
     def get(self, r: Request) -> (Page, dict):
