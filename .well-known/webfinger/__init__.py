@@ -6,14 +6,14 @@ def get(r: Request) -> dict:
     return Response(json.dumps({
         "subject": "acct:islekcaganmert.vercel.app@islekcaganmert.vercel.app",
         "aliases": [
-            "https://islekcaganmert.vercel.app/activitypub.json",
+            "https://islekcaganmert.vercel.app/ap/Actor.py",
             "https://islekcaganmert.vercel.app/"
         ],
         "links": [
             {
                 "rel": "self",
                 "type": "application/activity+json",
-                "href": "https://islekcaganmert.vercel.app/activitypub.json"
+                "href": "https://islekcaganmert.vercel.app/ap/Actor.py"
             },
             {
                 "rel": "http://webfinger.net/rel/profile-page",
