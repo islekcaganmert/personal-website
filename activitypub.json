@@ -4,7 +4,7 @@
   "id": "https://islekcaganmert.vercel.app/activitypub.json",
   "name": "Çağan Mert İŞLEK",
   "preferredUsername": "islekcaganmert.vercel.app",
-  "summary": "<a>Inventor of TheProtocols<br/>Full-Stack Software Developer<br/>Philosopher<br/>BLINK</a>",
+  "summary": "<a>Inventor of TheProtocols<br />Full-Stack Software Developer<br />Philosopher<br />BLINK</a>",
   "inbox": "https://islekcaganmert.vercel.app/ap/Inbox.py",
   "outbox": "https://islekcaganmert.vercel.app/ap/Outbox.py",
   "followers": "https://islekcaganmert.vercel.app/ap/Followers.py",

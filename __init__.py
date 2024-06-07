@@ -8,7 +8,7 @@ def get(r: Request) -> Page:
     return Page(
         title='Çağan Mert İŞLEK',
         description='',
-        selector='body_green',
+        selector='body_blank',
         icon={
             'href': '/static/favicon.png',
             'type': 'image/x-icon'
@@ -66,11 +66,11 @@ def get(r: Request) -> Page:
                             Widget(
                                 'p',
                                 selector='p-note',
-                                childs=[f'{i}<br>' for i in [
-                                    'Inventor of <a href="/projects/theprotocols">TheProtocols</a>',
-                                    'Full-Stack Software Developer',
-                                    'Philosopher',
-                                    'BLINK'
+                                childs=[Widget('a', href=i[1], innertext=f'{i[0]}<br>') for i in [
+                                    ['Inventor of TheProtocols', '/projects/TheProcotols.py'],
+                                    ['Full-Stack Software Developer', '/about/Software.py'],
+                                    ['Philosopher', '/about/Philosophy.py'],
+                                    ['BLINK', '/about/Kpop.py']
                                 ]]
                             ),
                             Widget(
