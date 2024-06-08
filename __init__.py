@@ -93,7 +93,7 @@ def get(r: Request) -> Page:
                                         ]
                                     ) for i in [
                                         ['Work', 'Founder @ HereUS'],
-                                        ['Education', 'Sophomore @ High School'],
+                                        ['Education', 'Junior @ High School'],
                                         ['Pronouns', 'he/him']
                                     ]
                                 ]

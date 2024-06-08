@@ -41,7 +41,7 @@ def get(r: Request) -> Response:
         {
           "type": "PropertyValue",
           "name": "Education",
-          "value": "Sophomore @ High School"
+          "value": "Junior @ High School"
         },
         {
           "type": "PropertyValue",
