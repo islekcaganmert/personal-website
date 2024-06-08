@@ -209,7 +209,7 @@ def get(r: Request) -> Page:
                                                 selector='the_box',
                                                 style={'margin-bottom': '10px'},
                                                 childs=[
-                                                    Widget('h3', innertext=open(f"./Blog/{i}", 'r').read().split("'title': '")[1].split("'")[0]),
+                                                    Widget('h3', innertext=open(f"Blog/{i}", 'r').read().split("'title': '")[1].split("'")[0]),
                                                     Widget(
                                                         'p',
                                                         innertext=datetime.strptime(os.path.basename(i).split('_')[0].split('/')[-1], '%Y%m%d%H%M').strftime('%B %d, %Y'),
@@ -219,7 +219,7 @@ def get(r: Request) -> Page:
                                             )
                                         ]
                                     )
-                                    for i in [i for i in os.listdir('./Blog')[::-1] if i not in ['Super.py', '__pycache__']]
+                                    for i in [i for i in os.listdir('Blog')[::-1] if i not in ['Super.py', '__pycache__']]
                                 ]
                             ),
                             Widget(

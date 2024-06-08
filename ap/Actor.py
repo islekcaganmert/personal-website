@@ -27,6 +27,28 @@ def get(r: Request) -> Response:
       "endpoints":{
         "sharedInbox": "https://islekcaganmert.vercel.app/ap/Inbox.py"
       },
+      "attachment": [
+        {
+          "type": "PropertyValue",
+          "name": "Site",
+          "value": "https://islekcaganmert.vercel.app/</a>"
+        },
+        {
+          "type": "PropertyValue",
+          "name": "Work",
+          "value": "Founder @ HereUS"
+        },
+        {
+          "type": "PropertyValue",
+          "name": "Education",
+          "value": "Sophomore @ High School"
+        },
+        {
+          "type": "PropertyValue",
+          "name": "Pronouns",
+          "value": "he/him"
+        }
+      ],
       "url": "https://islekcaganmert.vercel.app/",
       "icon": {
         "type": "Image",
