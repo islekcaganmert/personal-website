@@ -15,9 +15,9 @@ class Super:
             "published": self.data['datetime'].strftime('%Y-%m-%dT%H:%M:00Z'),
             "attributedTo": "https://islekcaganmert.vercel.app/ap/Actor.py",
             "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
-        }), headers={'Content-Type': 'application/activity+json'})
+        }), headers={'Content-Type': r.headers.get('Accept')})
 
-    def get(self, r: Request) -> (Page, dict):
+    def get(self, r: Request) -> (Page, Response):
         if 'application/activity+json' in r.headers.get('Accept'):
             return self.activity(r)
         else:
