@@ -218,7 +218,7 @@ def get(r: Request) -> Page:
                                                 ]
                                             )
                                         ]
-                                    )
+                                    ) if os.path.isfile(f"Blog/{i}") else ''
                                     for i in [i for i in os.listdir('Blog')[::-1] if i not in ['Super.py', '__pycache__']]
                                 ]
                             ),
