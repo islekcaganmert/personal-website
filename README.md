@@ -1,8 +1,9 @@
 # personal-website
 
 ### To-Do
-[ ] ActivityPub
-[ ] Blog DB
-[ ] Blog UI
-[ ] Projects
-[ ] Interactive Home
+- [ ] Blog DB
+- [ ] Blog UI
+- [ ] Projects
+- [ ] Interactive Home
+- [ ] Migration to BevyFrame 0.4+
+

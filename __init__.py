@@ -94,7 +94,8 @@ def get(r: Request) -> Page:
                                     ) for i in [
                                         ['Work', 'Founder @ HereUS'],
                                         ['Education', 'Junior @ High School'],
-                                        ['Pronouns', 'he/him']
+                                        ['Pronouns', 'he/him'],
+                                        ['MBTI', 'ISTJ-A']
                                     ]
                                 ]
                             ),
@@ -148,10 +149,10 @@ def get(r: Request) -> Page:
                                             )
                                             for i in [
                                                 ['✉️', 'mailto:islekcaganmert@gmail.com'],
+                                                ['𝕏', 'https://x.com/islekcaganmert'],
                                                 ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
-                                                ['Fediverse', 'https://pebble.social/@islekcaganmert'],
                                                 ['Instagram', 'https://instagram.com/islekcaganmert'],
-                                                ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
+                                                # ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
                                                 ['Discord', 'https://discordapp.com/users/983767367135932466']
                                             ]
                                         ]
