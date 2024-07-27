@@ -150,7 +150,7 @@ def get(r: Request) -> Page:
                                             for i in [
                                                 ['✉️', 'mailto:islekcaganmert@gmail.com'],
                                                 ['𝕏', 'https://x.com/islekcaganmert'],
-                                                ['Bluesky', 'https://bsky.app/profile/islekcaganmert.github.io']
+                                                ['Bluesky', 'https://bsky.app/profile/islekcaganmert.github.io'],
                                                 ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
                                                 ['Instagram', 'https://instagram.com/islekcaganmert'],
                                                 # ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
