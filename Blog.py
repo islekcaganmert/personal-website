@@ -11,10 +11,10 @@ class Super:
         return Response(json.dumps({
             "@context": "https://www.w3.org/ns/activitystreams",
             "type": "Note",
-            "id": f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
+            "id": f"https://islekcaganmert.me/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
             "published": self.data['datetime'].strftime('%Y-%m-%dT%H:%M:00Z'),
-            "attributedTo": "https://islekcaganmert.vercel.app/ap/Actor.py",
-            "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.vercel.app/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
+            "attributedTo": "https://islekcaganmert.me/ap/Actor.py",
+            "content": "<p>" + self.data['title'] + '</p><p><a href="https://islekcaganmert.me/Blog/' + self.data['datetime'].strftime('%Y%m%d%H%M') + '_' + self.data['id'] + '.py">Read it on web</a></p>',
         }), headers={'Content-Type': r.headers.get('Accept')})
 
     def get(self, r: Request) -> (Page, Response):
@@ -32,7 +32,7 @@ class Super:
                         self.data['content'].split('<img')[1].split('src="')[1].split('"')[0]
                         if '<img' in self.data['content'] else ''
                     ),
-                    'url': f"https://islekcaganmert.vercel.app/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
+                    'url': f"https://islekcaganmert.me/Blog/{self.data['datetime'].strftime('%Y%m%d%H%M')}_{self.data['id']}.py",
                     'type': 'article',
                     'site_name': 'Blog de Çağan Mert İŞLEK',
                     'article:published_time': self.data['datetime'].strftime('%B %d, %Y'),

@@ -20,7 +20,7 @@ def get(r: Request) -> Page:
             'type': 'image/x-icon'
         },
         childs=[
-            Widget('a', rel='me', href='https://islekcaganmert.vercel.app/', innertext=''),
+            Widget('a', rel='me', href='https://islekcaganmert.me/', innertext=''),
             Widget(
                 'div',
                 selector='h-card',
@@ -65,8 +65,8 @@ def get(r: Request) -> Page:
                             Widget(
                                 'p',
                                 selector='p-url',
-                                href='https://islekcaganmert.vercel.app',
-                                innertext='@islekcaganmert.vercel.app',
+                                href='https://islekcaganmert.me',
+                                innertext='@islekcaganmert.me',
                                 style={'margin-top': '-30px'}
                             ),
                             Widget(

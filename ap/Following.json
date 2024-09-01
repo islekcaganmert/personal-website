@@ -1,8 +1,0 @@
-{
-  "@context":[
-    "https://www.w3.org/ns/activitystreams"
-  ],
-  "id": "https://islekcaganmert.vercel.app/ap/Following.json",
-  "type":"OrderedCollection",
-  "totalItems": 0
-}
