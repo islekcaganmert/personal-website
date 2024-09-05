@@ -235,7 +235,7 @@ def get(r: Request) -> Page:
                                 childs=[
                                     Widget(
                                         'a',
-                                        href=repo['html_url'],
+                                        href=repo['homepage'] if repo['homepage'] else repo['html_url'],
                                         target='_blank',
                                         childs=[
                                             Widget(
