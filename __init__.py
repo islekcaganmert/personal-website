@@ -34,7 +34,9 @@ def get(r: Request) -> Page:
                             'width': '100vw',
                             'height': '300px',
                             'margin-top': '-10px',
-                            'margin-left': '-10px'
+                            'margin-left': '-10px',
+                            'max-height':'calc(100vh - 600px)',
+                            'min-height':'100px'
                         }
                     ),
                     Widget(
