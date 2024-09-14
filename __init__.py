@@ -1,16 +1,12 @@
-import json
 import os
 from datetime import datetime
 
+from bevyframe import *
 import requests
-from flask import render_template
-from bevyframe import Request, Page, Widget
 
 
-def get(r: Request) -> Page:
+def get(context: Context) -> Page:
     repos = requests.get('https://api.github.com/users/islekcaganmert/repos').json()
-    if 'application/activity+json' in r.headers.get('Accept'):
-        return json.load(open('activitypub.json', 'r'))
     return Page(
         title='Çağan Mert İŞLEK',
         description='',
@@ -21,76 +17,61 @@ def get(r: Request) -> Page:
         },
         childs=[
             Widget('a', rel='me', href='https://islekcaganmert.me/', innertext=''),
-            Widget(
-                'div',
+            Widget('a', rel='me', href='https://sharkey.world/@islekcaganmert', innertext=''),
+            Container(
                 selector='h-card',
                 childs=[
-                    Widget(
-                        'img',
-                        src='/static/banner.jpg',
+                    Image(
+                        '/static/banner.jpg',
+                        'Banner',
                         selector='u-banner',
-                        style={
-                            'object-fit': 'cover',
-                            'width': '100vw',
-                            'height': '300px',
-                            'margin-top': '-10px',
-                            'margin-left': '-10px',
-                            'max-height':'calc(100vh - 600px)',
-                            'min-height':'100px'
-                        }
+                        width=Size.Viewport.width(100),
+                        height=Size.pixel(300),
+                        margin=Margin(
+                            top=Size.pixel(-10),
+                            left=Size.pixel(-10),
+                        ),
+                        max_height=substract_style(Size.Viewport.height(100), Size.pixel(600)),
+                        min_height=Size.pixel(100),
+                        css={'object-fit': 'cover', }
                     ),
-                    Widget(
-                        'div',
-                        style={
-                            'max-width': '600px',
-                            'width': 'calc(100vw - 60px)',
-                            'margin': 'auto',
-                            'margin-top': '-55px'
-                        },
+                    Container(
+                        max_width=Size.pixel(600),
+                        width=substract_style(Size.Viewport.width(100), Size.pixel(60)),
+                        margin=Margin(
+                            top=Size.pixel(-55),
+                            left=Size.auto,
+                            right=Size.auto,
+                        ),
                         childs=[
-                            Widget(
-                                'img',
-                                src='/static/favicon.png',
+                            Image(
+                                '/static/favicon.png',
+                                'Avatar',
                                 selector='u-photo',
-                                style={
-                                    'height': '100px',
-                                    'width': '100px',
-                                    'border-radius': '50px',
-                                    'background-color': '#ffffff'
-                                }
+                                width=Size.pixel(100),
+                                height=Size.pixel(100),
+                                border_radius=Size.pixel(50),
+                                background_color='white',
                             ),
-                            Widget(
-                                'h1',
-                                selector='p-name',
-                                innertext='Çağan Mert İŞLEK'
+                            Title('Çağan Mert İŞLEK', selector='p-name'),
+                            Label(
+                                Link('@islekcaganmert.me', 'https://islekcaganmert.me').render(),
+                                margin=Margin(top=Size.pixel(-30))
                             ),
-                            Widget(
-                                'p',
-                                selector='p-url',
-                                href='https://islekcaganmert.me',
-                                innertext='@islekcaganmert.me',
-                                style={'margin-top': '-30px'}
-                            ),
-                            Widget(
-                                'p',
-                                selector='p-note',
-                                childs=[Widget('a', href=i[1], innertext=f'{i[0]}<br>') for i in [
-                                    ['Inventor of TheProtocols', '/projects/TheProcotols.py'],
-                                    ['Full-Stack Software Developer', '/about/Software.py'],
-                                    ['Philosopher', '/about/Philosophy.py'],
-                                    ['BLINK', '/about/Kpop.py']
-                                ]]
-                            ),
+                            Line([f'{i[0]}<br>' for i in [
+                                ['Inventor of TheProtocols', 'https://theprotocols.islekcaganmert.me/'],
+                                ['Full-Stack Software Developer', '/About/Software.py'],
+                                ['Philosopher', '/About/Philosophy.py'],
+                                ['BLINK', '/About/Kpop.py']
+                            ]]),
                             Widget(
                                 'table',
-                                style={
-                                    'margin-left': '-3px'
-                                },
+                                margin=Margin(left=Size.pixel(-3)),
                                 childs=[
                                     Widget(
                                         'tr',
                                         childs=[
-                                            Widget('td', childs=[Widget('b', innertext=i[0])]),
+                                            Widget('td', childs=[Bold(i[0])]),
                                             Widget('td', innertext=f'&nbsp; &nbsp;{i[1]}')
                                         ]
                                     ) for i in [
@@ -101,136 +82,135 @@ def get(r: Request) -> Page:
                                     ]
                                 ]
                             ),
-                            Widget(
-                                'div',
-                                style={
-                                    'width': '100vw',
-                                    'max-width': '600vw',
-                                    'margin-left': '-30px',
-                                    'overflow-x': 'scroll'
-                                },
+                            Container(
+                                width=Size.Viewport.width(100),
+                                max_width=Size.Viewport.width(600),
+                                margin=Margin(left=Size.pixel(-30)),
+                                css={'overflow-x': 'scroll'},
                                 childs=[
-                                    Widget(
-                                        'div',
-                                        style={
-                                            'overflow-y': 'hidden',
-                                            'overflow-x': 'scroll',
-                                            'white-space': 'nowrap',
-                                            'width': '600px',
-                                            'margin-top': '10px'
-                                        },
+                                    Container(
+                                        width=Size.pixel(600),
+                                        margin=Margin(top=Size.pixel(10)),
+                                        css={'overflow-y': 'hidden', 'overflow-x': 'scroll', 'white-space': 'nowrap'},
                                         childs=[
-                                            Widget(
-                                                'div',
-                                                style={
-                                                    'margin-left': '30px',
-                                                    'margin-right': '-25px',
-                                                    'float': 'left',
-                                                    'display': 'inline-block'
-                                                },
-                                                childs=[
-                                                    Widget(
-                                                        'a',
-                                                        href=i[1],
-                                                        target='_blank',
-                                                        rel="me",
-                                                        childs=[
-                                                            Widget(
-                                                                'button',
-                                                                selector='button mini',
-                                                                innertext=i[0],
-                                                                style={
-                                                                    'width': 'max-content',
-                                                                    'padding-left': '10px',
-                                                                    'padding-right': '10px'
-                                                                }
-                                                            )
-                                                        ]
-                                                    )
-                                                ]
+                                            Container(
+                                                margin=Margin(left=Size.pixel(30), right=Size.pixel(-25)),
+                                                css={'display': 'inline-block', 'float': 'left'},
+                                                childs=[i]
                                             )
                                             for i in [
-                                                ['✉️', 'mailto:islekcaganmert@gmail.com'],
-                                                ['𝕏', 'https://x.com/islekcaganmert'],
-                                                ['Fediverse', 'https://calckey.world/@islekcaganmert'],
-                                                ['LinkedIn', 'https://linkedin.com/in/islekcaganmert'],
-                                                ['Instagram', 'https://instagram.com/islekcaganmert'],
-                                                # ['Lemmy', 'https://lemmy.today/u/islekcaganmert'],
-                                                ['Discord', 'https://discordapp.com/users/983767367135932466']
+                                                Button(
+                                                    'mini',
+                                                    innertext='✉️',
+                                                    onclick=context.start_redirect("mailto:islekcaganmert@gmail.com"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(10), right=Size.pixel(10))
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='𝕏',
+                                                    onclick=context.start_redirect("https://x.com/islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(12), right=Size.pixel(8)),
+                                                    css={'border-bottom-right-radius': '2px', 'border-top-right-radius': '2px'}
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='⁂',
+                                                    onclick=context.start_redirect("https://sharkey.world/@islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(8), right=Size.pixel(12)),
+                                                    margin=Margin(left=Size.pixel(-3)),
+                                                    css={'border-bottom-left-radius': '2px', 'border-top-left-radius': '2px'}
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='LinkedIn',
+                                                    onclick=context.start_redirect("https://linkedin.com/in/islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(10), right=Size.pixel(10))
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='Instagram',
+                                                    onclick=context.start_redirect("https://instagram.com/islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(10), right=Size.pixel(10))
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='Discord',
+                                                    onclick=context.start_redirect("https://discordapp.com/users/983767367135932466"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(10), right=Size.pixel(10))
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='Reddit',
+                                                    onclick=context.start_redirect("https://reddit.com/u/islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(12), right=Size.pixel(8)),
+                                                    css={'border-bottom-right-radius': '2px', 'border-top-right-radius': '2px'}
+                                                ),
+                                                Button(
+                                                    'mini',
+                                                    innertext='Lemmy',
+                                                    onclick=context.start_redirect("https://lemmy.today/u/islekcaganmert"),
+                                                    width=Size.max_content,
+                                                    padding=Padding(left=Size.pixel(8), right=Size.pixel(12)),
+                                                    margin=Margin(left=Size.pixel(-3)),
+                                                    css={'border-bottom-left-radius': '2px', 'border-top-left-radius': '2px'}
+                                                ),
                                             ]
                                         ]
                                     )
                                 ]
                             ),
-                            Widget(
-                                'div',
+                            Container(
                                 id='button_bar',
                                 selector='body_blank',
-                                style={
-                                    'position': 'sticky',
-                                    'top': '0px',
-                                    'padding-top': '10px',
-                                    'padding-bottom': '10px'
-                                },
+                                position=Position.sticky(top=Size.pixel(0)),
+                                padding=Padding(top=Size.pixel(10), bottom=Size.pixel(10)),
                                 childs=[
-                                    Widget(
-                                        'div',
-                                        style={
-                                            'font-size': '1.6em',
-                                            'display': 'inline-block',
-                                            'width': 'calc(100% / 3)',
-                                            'text-align': 'center',
-                                            'cursor': 'pointer'
-                                        },
+                                    Container(
+                                        font_size=Size.Relative.font(1.6),
+                                        width=divide_style(Size.percent(100), 3),
+                                        text_align='center',
+                                        cursor=Cursor.pointer,
+                                        css={'display': 'inline-block'},
                                         id=f"{i.lower()}_button",
                                         selector='tab_button',
                                         onclick=f"chooseTab('{i.lower()}')",
-                                        childs=[
-                                            Widget(
-                                                'a',
-                                                innertext=i
-                                            )
-                                        ]
-                                    )
-                                    for i in ['Posts', 'Repositories', 'Videos']
+                                        childs=[i]
+                                    ) for i in ['Posts', 'Repositories', 'Videos']
                                 ]
                             ),
-                            Widget(
-                                'div',
-                                style={
+                            Container(
+                                height=Size.pixel(1),
+                                css={
                                     'visibility': 'hidden',
-                                    'height': '1px',
                                     'overflow-y': 'hidden'
                                 },
                                 id='posts_feed',
                                 childs=[
-                                    Widget(
-                                        'a',
-                                        href=f"/Blog/{i}",
+                                    Box(
+                                        margin=Margin(bottom=Size.pixel(10)),
+                                        onclick=context.start_redirect(f"/Blog/{i}"),
                                         childs=[
-                                            Widget(
-                                                'div',
-                                                selector='the_box',
-                                                style={'margin-bottom': '10px'},
-                                                childs=[
-                                                    Widget('h3', innertext=open(f"Blog/{i}", 'r').read().split("'title': '")[1].split("'")[0]),
-                                                    Widget(
-                                                        'p',
-                                                        innertext=datetime.strptime(os.path.basename(i).split('_')[0].split('/')[-1], '%Y%m%d%H%M').strftime('%B %d, %Y'),
-                                                        style={'margin-top': '-20px'}
-                                                    )
-                                                ]
+                                            Heading('h3', innertext=open(f"Blog/{i}").read().split("'title': '")[1].split("'")[0]),
+                                            Label(
+                                                innertext=datetime.strptime(os.path.basename(i).split('_')[0].split('/')[-1], '%Y%m%d%H%M').strftime('%B %d, %Y'),
+                                                margin=Margin(top=Size.pixel(-20))
                                             )
                                         ]
                                     ) if os.path.isfile(f"Blog/{i}") else ''
                                     for i in [i for i in sorted(os.listdir('Blog'))[::-1] if i not in ['Super.py', '__pycache__']]
                                 ]
                             ),
-                            Widget(
-                                'div',
-                                style={
+                            Container(
+                                height=Size.pixel(1),
+                                css={
                                     'visibility': 'hidden',
-                                    'height': '1px',
                                     'overflow-y': 'hidden'
                                 },
                                 id='repositories_feed',
@@ -240,24 +220,22 @@ def get(r: Request) -> Page:
                                         href=repo['homepage'] if repo['homepage'] else repo['html_url'],
                                         target='_blank',
                                         childs=[
-                                            Widget(
-                                                'div',
-                                                selector='the_box',
-                                                style={'margin-bottom': '10px'},
+                                            Box(
+                                                margin=Margin(bottom=Size.pixel(10)),
                                                 childs=[
-                                                    Widget('h3', innertext=repo['full_name']),
+                                                    Heading(repo['full_name']),
                                                     (
-                                                        Widget('p', innertext=repo['description'], style={'margin-top': '-20px'})
+                                                        Label(repo['description'], style={'margin-top': '-20px'})
                                                         if repo['description'] is not None else ''
                                                     ),
-                                                    Widget('p', childs=[
-                                                        f"{i.render()} &nbsp; &nbsp; " for i in [
-                                                            Widget('i', innertext=repo['language']),
-                                                            Widget('a', innertext=f"★ {repo['stargazers_count']}"),
-                                                            Widget('a', innertext=f"◉ {repo['watchers_count']}"),
-                                                            Widget('a', innertext=f"⑃ {repo['forks_count']}")
+                                                    Line([
+                                                        f"{i} &nbsp; &nbsp; " for i in [
+                                                            f"<i>{repo.get('language', 'Custom')}</i>",
+                                                            f"★ {repo['stargazers_count']}",
+                                                            f"◉ {repo['watchers_count']}",
+                                                            f"⑃ {repo['forks_count']}"
                                                         ]
-                                                    ], style={'margin-top': '-10px'})
+                                                    ], margin=Margin(top=Size.pixel(-10)))
                                                 ]
                                             )
                                         ]
@@ -265,23 +243,22 @@ def get(r: Request) -> Page:
                                     for repo in repos
                                 ]
                             ),
-                            Widget(
-                                'div',
-                                style={
+                            Container(
+                                height=Size.pixel(1),
+                                css={
                                     'visibility': 'hidden',
-                                    'height': '1px',
                                     'overflow-y': 'hidden'
                                 },
                                 id='videos_feed',
                                 childs=[
                                     ''
-                                    for i in repos
+                                    for _ in []
                                 ]
                             )
                         ]
                     )
                 ]
             ),
-            Widget('script', innertext=open('__init__.js', 'r').read())
+            Widget('script', innertext=open('__init__.js').read())
         ]
     )
