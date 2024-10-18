@@ -1,4 +1,4 @@
-git+https://github.com/islekcaganmert/bevyframe@0ee5a8d0f786ae2e74bec9f65a1f055c3cb0fe3f#egg=BevyFrame
+git+https://github.com/islekcaganmert/bevyframe@9dac4b28a851a88e8fd364d4457e40a5c17f1327#egg=bevyframe
 blinker==1.8.2
 build==1.2.1
 certifi==2024.8.30
