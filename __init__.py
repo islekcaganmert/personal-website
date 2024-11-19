@@ -107,22 +107,7 @@ def get(context: Context) -> Page:
                                                     innertext='𝕏',
                                                     onclick=context.start_redirect(f"https://x.com/{context.env['social']['x']}"),
                                                     width=Size.max_content,
-                                                    padding=Padding(left=Size.pixel(12), right=Size.pixel(8)),
-                                                    css={
-                                                        'border-bottom-right-radius': '2px',
-                                                        'border-top-right-radius': '2px'
-                                                    }
-                                                ),
-                                                Button(
-                                                    'mini',
-                                                    innertext='⁂',
-                                                    onclick=context.start_redirect(
-                                                        f'https://{context.env["social"]["fediverse"].split("@")[2]}/@{context.env["social"]["fediverse"].split("@")[1]}'),
-                                                    width=Size.max_content,
-                                                    padding=Padding(left=Size.pixel(8), right=Size.pixel(12)),
-                                                    margin=Margin(left=Size.pixel(-3)),
-                                                    css={'border-bottom-left-radius': '2px',
-                                                         'border-top-left-radius': '2px'}
+                                                    padding=Padding(left=Size.pixel(10), right=Size.pixel(10))
                                                 ),
                                                 Button(
                                                     'mini',
