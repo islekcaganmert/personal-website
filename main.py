@@ -6,7 +6,6 @@ import os
 app = Frame(
     package="me.islekcaganmert.www",
     developer="islekcaganmert@hereus.net",
-    administrator=False,
     secret=os.environ.get('SECRET'),
     style=hereus_ui_3_2,
     icon=User(os.environ.get('USER', 'demo@hereus.net')).profile_photo,
