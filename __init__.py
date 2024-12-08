@@ -13,6 +13,13 @@ def get(context: Context) -> Page:
     return Page(
         title=u,
         color=context.env["theme"],
+        OpenGraph={
+            'title': str(u),
+            'description': ', '.join(context.env['bio']),
+            'image': context.env['banner'],
+            'url': f"https://{context.env['domain']}/",
+            'type': 'profile'
+        },
         childs=[
             Widget('a', rel='me', href=f'https://{context.env["domain"]}/', innertext=''),
             Widget('a', rel='me', href=f'https://{context.env["social"]["fediverse"].split("@")[2]}/@{context.env["social"]["fediverse"].split("@")[1]}', innertext=''),
