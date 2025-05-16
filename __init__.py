@@ -81,7 +81,7 @@ def get(context: Context) -> Page:
                                             'Gay': 'he/him',
                                             'Lesbian': 'she/her',
                                         }.get(u.gender, 'they/them')],
-                                        ['MBTI', 'ISTJ-A']
+                                        ['MBTI', context.env['mbti']]
                                     ]
                                 ]
                             ),
