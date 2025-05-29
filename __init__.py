@@ -58,7 +58,7 @@ def get(context: Context) -> Page:
                             Title(str(u)),
                             Label(
                                 Link(f'@{context.env["domain"]}', f'https://{context.env["domain"]}').render(),
-                                margin=Margin(top=Size.pixel(-30))
+                                margin=Margin(top=Size.pixel(-20))
                             ),
                             Line([f'{i}<br>' for i in context.env['bio']]),
                             Widget(
@@ -75,12 +75,6 @@ def get(context: Context) -> Page:
                                         ['Job', f"{context.env['job']['title']} @ {context.env['job']['company']}"],
                                         ['Education', f"{context.env['education']['degree']} @ {context.env['education']['school']}"],
                                         ['Location', context.env['location']],
-                                        ['Pronouns', {
-                                            'Male': 'he/him',
-                                            'Female': 'she/her',
-                                            'Gay': 'he/him',
-                                            'Lesbian': 'she/her',
-                                        }.get(u.gender, 'they/them')],
                                         ['MBTI', context.env['mbti']]
                                     ]
                                 ]
